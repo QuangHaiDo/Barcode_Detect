@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+    <common.CameraSourcePreview
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="539dp">
+
+        <common.GraphicOverlay
+            android:id="@+id/camera_preview_graphic_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </common.CameraSourcePreview>
+
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="32dp"
+        android:background="#FFFFFF"
+        android:longClickable="true"
+        android:maxLines="3"
+        android:padding="6dp"
+        android:scrollbars="vertical"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+</LinearLayout>
