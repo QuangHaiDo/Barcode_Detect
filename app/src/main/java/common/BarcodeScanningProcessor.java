@@ -13,6 +13,7 @@
 // limitations under the License.
 package common;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -93,10 +94,6 @@ public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseV
             graphicOverlay.add(imageGraphic);
         }
         Log.d("Hai","BarcodeScanProc line 73,size: "+barcodes.size());
-        for (int i = 0; i < barcodes.size(); ++i) {
-            Log.d("Hai",barcodes.get(i).getRawValue());
-
-        }
 
         for (int i = 0; i < barcodes.size(); ++i) {
             FirebaseVisionBarcode barcode = barcodes.get(i);
