@@ -41,7 +41,6 @@
         android:paddingRight="12dp"
         android:paddingBottom="12dp"
         android:scrollbars="vertical"
-        android:text="0123456789"
         android:textAlignment="textStart"
         android:textSize="18sp"
         android:textStyle="bold" />

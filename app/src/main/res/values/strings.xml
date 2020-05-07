@@ -8,8 +8,15 @@
         Product Info: \n
             SKU:01234567899\n
             Tên sản phẩm: product 1\n
-            Nhà cung cấp: Công ty trách nhiệm MTV ACNJFH\n
+            Nhà cung cấp: Công ty trách nhiệm MTV ABCDE\n
             Giá: 1,000,000\n
-            Thông tin bổ sung: fjhwoihjgehguoehj
+            Thông tin bổ sung:
+    </string>
+    <string name="welcome_string">
+        Barcode Checker \n
+        Ứng dụng đọc và tra cứu Barcode \n
+        Phát triển bởi: \n
+        - Đỗ Quang Hải - K61-CAC \n
+        - Đinh Khánh Linh - K61-CAC \n
     </string>
 </resources>
