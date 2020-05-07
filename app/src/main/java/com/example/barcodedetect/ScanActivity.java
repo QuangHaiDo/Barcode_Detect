@@ -1,12 +1,9 @@
 package com.example.barcodedetect;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +24,6 @@ public class ScanActivity extends Activity {
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
     private TextView textResult;
-    private Button startProductPreview;
-    private Button clearText;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,24 +31,6 @@ public class ScanActivity extends Activity {
         textResult = findViewById(R.id.text_result);
         textResult.setMovementMethod(new ScrollingMovementMethod());
         preview = findViewById(R.id.camera_preview);
-        startProductPreview = findViewById(R.id.btn_search_barcode);
-
-        /**
-         * Pass barcode here to start Product_preview with result
-        * */
-        startProductPreview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ProductResultActivity.class));
-            }
-        });
-        clearText = findViewById(R.id.clear_textview);
-        clearText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textResult.setText("");
-            }
-        });
         if (preview == null) {
             Log.d(TAG, "Preview is null");
         }

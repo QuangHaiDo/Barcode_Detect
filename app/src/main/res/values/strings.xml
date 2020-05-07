@@ -4,12 +4,4 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_view">text view</string>
-    <string name="product_info">
-        Product Info: \n
-            SKU:01234567899\n
-            Tên sản phẩm: product 1\n
-            Nhà cung cấp: Công ty trách nhiệm MTV ACNJFH\n
-            Giá: 1,000,000\n
-            Thông tin bổ sung: fjhwoihjgehguoehj
-    </string>
 </resources>
