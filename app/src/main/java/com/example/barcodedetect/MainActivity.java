@@ -1,6 +1,7 @@
 package com.example.barcodedetect;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,12 +19,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FloatingActionButton fab_scan_code = findViewById(R.id.ic_scan_code);
+
         fab_scan_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),ScanActivity.class));
             }
         });
+
     }
 
     @Override
