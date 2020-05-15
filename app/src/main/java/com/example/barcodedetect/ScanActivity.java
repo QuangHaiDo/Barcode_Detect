@@ -27,7 +27,6 @@ public class ScanActivity extends Activity {
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
     private TextView textResult;
-    private Button startProductPreview;
     private Button clearText;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,24 +35,21 @@ public class ScanActivity extends Activity {
         textResult = findViewById(R.id.text_result);
         textResult.setMovementMethod(new ScrollingMovementMethod());
         preview = findViewById(R.id.camera_preview);
-        startProductPreview = findViewById(R.id.btn_search_barcode);
+        textResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (textResult.getText().toString().length()!=0){
+                    Intent i = new Intent(getApplicationContext(),ProductResultActivity.class);
+                    i.putExtra("textResult",textResult.getText().toString());
+                    startActivity(i);
+                }
+            }
+        });
 
-        /**
-         * Pass barcode here to start Product_preview with result
-        * */
-        startProductPreview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ProductResultActivity.class));
-            }
-        });
+
         clearText = findViewById(R.id.clear_textview);
-        clearText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textResult.setText("");
-            }
-        });
+        clearText.setOnClickListener(v -> textResult.setText(""));
+
         if (preview == null) {
             Log.d(TAG, "Preview is null");
         }
@@ -107,6 +103,7 @@ public class ScanActivity extends Activity {
 
     @Override
     public void onResume() {
+        textResult.setText("");
         super.onResume();
         Log.d(TAG, "onResume");
         startCameraSource();

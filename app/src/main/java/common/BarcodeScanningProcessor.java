@@ -93,7 +93,6 @@ public class BarcodeScanningProcessor extends VisionProcessorBase<List<FirebaseV
             CameraImageGraphic imageGraphic = new CameraImageGraphic(graphicOverlay, originalCameraImage);
             graphicOverlay.add(imageGraphic);
         }
-        Log.d("Hai","BarcodeScanProc line 73,size: "+barcodes.size());
 
         for (int i = 0; i < barcodes.size(); ++i) {
             FirebaseVisionBarcode barcode = barcodes.get(i);

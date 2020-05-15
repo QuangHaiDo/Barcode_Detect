@@ -29,9 +29,10 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:text="@string/findingHint"
+            android:padding="12dp"
+            android:id="@+id/productInfo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/product_info" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </ScrollView>

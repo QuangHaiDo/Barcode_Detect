@@ -19,4 +19,6 @@
         - Đỗ Quang Hải - K61-CAC \n
         - Đinh Khánh Linh - K61-CAC \n
     </string>
+    <string name="no_result_found">No Result Found</string>
+    <string name="findingHint">Đang tìm kiếm sản phẩm...</string>
 </resources>

@@ -2,20 +2,26 @@ package com.example.barcodedetect;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import firebase.database.helper.ProductDataAccess;
+import model.Product;
+
 public class ProductResultActivity extends Activity {
 
+    TextView productInfo;
+    ProductDataAccess productDataAccess;
+    Product pResult;
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
-    Integer[] imageId = {R.raw.img1,R.raw.img2,R.raw.img3,R.raw.img4,R.raw.img5};
-    String[] imagesName = {"image1","image2","image3","image4","image5"};
 
     private int dotscount;
     private ImageView[] dots;
@@ -26,12 +32,30 @@ public class ProductResultActivity extends Activity {
         setContentView(R.layout.product_preview);
         sliderDotspanel = findViewById(R.id.sliderDots);
         viewPager = findViewById(R.id.images_scrolling);
+        productInfo = findViewById(R.id.productInfo);
+
+
+        /**
+         * Read data from database and pass result to @TextView productInfo
+         */
+
+        productDataAccess = new ProductDataAccess();
+        productDataAccess.findProductByCode(getIntent().getStringExtra("textResult"),productInfo);
+        /* //read img_src
+        sau productDataAcess lay duoc thogn tin anh, src anh roi pass vao duoi
+        */
+        /** pass img_src to imageId[] and imagesName[]
+        */
+        Integer[] imageId = {R.raw.img1,R.raw.img2,R.raw.img3,R.raw.img4,R.raw.img5};
+        String[] imagesName = {"image1","image2","image3","image4","image5"};
+
         PagerAdapter adapter = new CustomPagerAdapter(ProductResultActivity.this,imageId,imagesName);
         viewPager.setAdapter(adapter);
 
         dotscount = adapter.getCount();
         dots = new ImageView[dotscount];
-
+        /** insert image to ViewPager
+         * */
         for(int i = 0; i < dotscount; i++){
 
             dots[i] = new ImageView(this);
