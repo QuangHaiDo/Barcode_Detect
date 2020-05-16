@@ -24,10 +24,6 @@ public class ProductDataAccess {
         dataResult = new Product();
     }
 
-    public Product getDataResult() {
-        return this.dataResult;
-    }
-
     public DatabaseReference getDatabaseReference() {
         return databaseReference;
     }
@@ -74,15 +70,16 @@ public class ProductDataAccess {
                     dataResult.setpCategory(map.get("CATEGORY").toString());
                     dataResult.setpVendor(map.get("VENDOR").toString());
                     dataResult.setpPrice(map.get("PRICE").toString());
-                    dataResult.setpNumOfImg(
-                            Integer.parseInt(
-                                map.get("NUM_OF_IMG").toString()
-                            )
-                    );
                     databaseReference.toString();
                     Log.d("HAIDD map",map.toString());
                     Log.d("HAIDD dataResult",dataResult.toString());
 
+
+                    if (map.get("IMG_SRC") != null) {
+                        dataResult.setpImg_src(map.get("IMG_SRC").toString());
+                    }
+
+                    Log.d("HAIDD dataResult",dataResult.toString());
                     tView.setText(dataResult.toString());
 //                    for (Map.Entry<String,Object> entry:map.entrySet()){
 //                        Log.d("HAIDD",entry.getKey()+":"+entry.getValue());
