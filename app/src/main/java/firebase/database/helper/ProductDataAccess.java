@@ -79,7 +79,7 @@ public class ProductDataAccess {
                                 map.get("NUM_OF_IMG").toString()
                             )
                     );
-
+                    databaseReference.toString();
                     Log.d("HAIDD map",map.toString());
                     Log.d("HAIDD dataResult",dataResult.toString());
 
