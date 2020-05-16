@@ -11,16 +11,18 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 
+import firebase.storage.helper.GetImgFromStorage;
+
 public class CustomPagerAdapter extends PagerAdapter {
     private Activity activity;
-    private Integer[] imagesArray;
-    private String[] namesArray;
-
-    public CustomPagerAdapter(Activity activity,Integer[] imagesArray,String[] namesArray){
+    private String[] imagesArray;
+    private GetImgFromStorage imgReference;
+    public CustomPagerAdapter(Activity activity,String[] imagesArray){
 
         this.activity = activity;
         this.imagesArray = imagesArray;
-        this.namesArray = namesArray;
+        this.imagesArray = imagesArray;
+        imgReference = new GetImgFromStorage();
     }
     @Override
     public int getCount() {
@@ -36,9 +38,10 @@ public class CustomPagerAdapter extends PagerAdapter {
         //finding id
         ImageView imageView =  viewItem.findViewById(R.id.item_imageView);
         //setting data
-
 //        imageView.setBackgroundResource(imagesArray[position]);
-
+        Glide.with(activity)
+                .load(imgReference.getReference().child(imagesArray[position]))
+                .into(imageView);
         container.addView(viewItem);
 
         return viewItem;

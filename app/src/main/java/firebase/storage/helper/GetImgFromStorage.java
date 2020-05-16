@@ -12,4 +12,8 @@ public class GetImgFromStorage {
     public GetImgFromStorage(String child) {
         this.reference = FirebaseStorage.getInstance().getReference("PRODUCT_IMG_SRC").child(child);
     }
+
+    public StorageReference getReference() {
+        return reference;
+    }
 }
