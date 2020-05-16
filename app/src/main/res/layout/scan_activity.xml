@@ -9,7 +9,7 @@
     <common.CameraSourcePreview
         android:id="@+id/camera_preview"
         android:layout_width="match_parent"
-        android:layout_height="560dp"
+        android:layout_height="600dp"
         android:layout_gravity="center">
 
         <common.GraphicOverlay
@@ -26,7 +26,6 @@
         android:text="Mã Tìm Thấy:"
         android:textSize="18sp"
         android:textStyle="bold" />
-
     <TextView
         android:id="@+id/text_result"
         android:layout_width="match_parent"
@@ -43,7 +42,6 @@
         android:paddingBottom="12dp"
         android:scrollbars="vertical"
         android:textAlignment="textStart"
-        android:textColor="#00E676"
         android:textSize="18sp"
         android:textStyle="bold" />
 
