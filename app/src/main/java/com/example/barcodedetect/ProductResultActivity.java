@@ -47,7 +47,11 @@ public class ProductResultActivity extends Activity {
         /** pass img_src to imageId[] and imagesName[]
         */
         Integer[] imageId = {R.raw.img1,R.raw.img2,R.raw.img3,R.raw.img4,R.raw.img5};
-        String[] imagesName = {"image1","image2","image3","image4","image5"};
+        String[] imagesName = {"8935001800286/IMG_20200507_153714.jpg",
+                "8935001800286/but-bi-thien-long-027.jpg",
+                "8935001800286/but_bi_tl_027_xanh_hop_20_3.jpg",
+                "8935246908662/IMG_20200507_153732.jpg",
+                "8935246908662/IMG_20200507_153741.jpg"};
 
         PagerAdapter adapter = new CustomPagerAdapter(ProductResultActivity.this,imageId,imagesName);
         viewPager.setAdapter(adapter);

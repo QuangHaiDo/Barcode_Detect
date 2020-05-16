@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
+
 public class CustomPagerAdapter extends PagerAdapter {
     private Activity activity;
     private Integer[] imagesArray;
@@ -34,7 +36,8 @@ public class CustomPagerAdapter extends PagerAdapter {
         //finding id
         ImageView imageView =  viewItem.findViewById(R.id.item_imageView);
         //setting data
-        imageView.setBackgroundResource(imagesArray[position]);
+
+//        imageView.setBackgroundResource(imagesArray[position]);
 
         container.addView(viewItem);
 
