@@ -6,15 +6,15 @@ public class Product {
     private String pCategory;
     private String pVendor;
     private String pPrice;
-    private String[] pImg_src;
+    private int pNumOfImg;
 
-    public Product(String pID, String pName, String pCategory, String pVendor, String pPrice, String[] pImg_src) {
+    public Product(String pID, String pName, String pCategory, String pVendor, String pPrice, int pNumOfImg) {
         this.pID = pID;
         this.pName = pName;
         this.pCategory = pCategory;
         this.pVendor = pVendor;
         this.pPrice = pPrice;
-        this.pImg_src = pImg_src;
+        this.pNumOfImg = pNumOfImg;
     }
     public Product() {
         this.pID = "No value";
@@ -22,7 +22,7 @@ public class Product {
         this.pCategory = "No value";
         this.pVendor = "No value";
         this.pPrice = "No value";
-        this.pImg_src = new String[]{"No value"};
+        this.pNumOfImg = 0;
     }
     public String getpID() {
         return pID;
@@ -64,13 +64,12 @@ public class Product {
         this.pPrice = pPrice;
     }
 
-    public String[] getpImg_src() {
-        return pImg_src;
+    public int getpNumOfImg() {
+        return pNumOfImg;
     }
 
-    public void setpImg_src(String pImg_src) {
-        String sub = pImg_src.substring(pImg_src.indexOf("["),pImg_src.indexOf("]"));
-        this.pImg_src = sub.split(",");
+    public void setpNumOfImg(int pNumOfImg) {
+        this.pNumOfImg = pNumOfImg;
     }
 
     public String toString(){
