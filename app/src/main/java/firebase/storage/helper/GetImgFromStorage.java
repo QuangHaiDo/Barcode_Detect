@@ -9,11 +9,13 @@ public class GetImgFromStorage {
     public GetImgFromStorage() {
         this.reference = FirebaseStorage.getInstance().getReference("PRODUCT_IMG_SRC");
     }
-    public GetImgFromStorage(String child) {
-        this.reference = FirebaseStorage.getInstance().getReference("PRODUCT_IMG_SRC").child(child);
-    }
+
 
     public StorageReference getReference() {
         return reference;
+    }
+
+    public void setReference(String path) {
+        this.reference = FirebaseStorage.getInstance().getReference("PRODUCT_IMG_SRC").child(path);
     }
 }

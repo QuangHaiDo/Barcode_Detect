@@ -11,22 +11,24 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
 import firebase.storage.helper.GetImgFromStorage;
 
 public class CustomPagerAdapter extends PagerAdapter {
     private Activity activity;
-    private String[] imagesArray;
+    private ArrayList<String> imagesArray;
     private GetImgFromStorage imgReference;
-    public CustomPagerAdapter(Activity activity,String[] imagesArray){
+    public CustomPagerAdapter(Activity activity,ArrayList<String> imagesArray,GetImgFromStorage imgReference){
 
         this.activity = activity;
         this.imagesArray = imagesArray;
         this.imagesArray = imagesArray;
-        imgReference = new GetImgFromStorage();
+        this.imgReference =imgReference;
     }
     @Override
     public int getCount() {
-        return imagesArray.length;
+        return imagesArray.size();
     }
 
     @NonNull
@@ -40,7 +42,8 @@ public class CustomPagerAdapter extends PagerAdapter {
         //setting data
 //        imageView.setBackgroundResource(imagesArray[position]);
         Glide.with(activity)
-                .load(imgReference.getReference().child(imagesArray[position]))
+                .load(imgReference.getReference().child(imagesArray.get(position)))
+                .fitCenter()
                 .into(imageView);
         container.addView(viewItem);
 
@@ -55,5 +58,13 @@ public class CustomPagerAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         // TODO Auto-generated method stub
         container.removeView((View) object);
+    }
+
+    public ArrayList<String> getImagesArray() {
+        return imagesArray;
+    }
+
+    public void setImagesArray(ArrayList<String> imagesArray) {
+        this.imagesArray = imagesArray;
     }
 }

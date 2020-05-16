@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public class Product {
     private String pID;
     private String pName;
@@ -22,7 +24,7 @@ public class Product {
         this.pCategory = "No value";
         this.pVendor = "No value";
         this.pPrice = "No value";
-        this.pImg_src = new String[]{"No value"};
+        this.pImg_src = new String[]{};
     }
     public String getpID() {
         return pID;
@@ -69,7 +71,7 @@ public class Product {
     }
 
     public void setpImg_src(String pImg_src) {
-        String sub = pImg_src.substring(pImg_src.indexOf("["),pImg_src.indexOf("]"));
+        String sub = pImg_src.substring(1,pImg_src.length()-1);
         this.pImg_src = sub.split(",");
     }
 
@@ -80,6 +82,6 @@ public class Product {
         "Tên sản phẩm:"+pName+"\n"+
         "Nhà cung cấp:"+pVendor+"\n"+
         "Giá:"+pPrice+"\n"+
-        "Thông tin bổ sung:";
+        "Thông tin bổ sung:"+"\n";
     }
 }

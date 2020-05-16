@@ -4,15 +4,21 @@ import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.barcodedetect.CustomPagerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
+import firebase.storage.helper.GetImgFromStorage;
 import model.Product;
 
 public class ProductDataAccess {
@@ -58,28 +64,26 @@ public class ProductDataAccess {
         });
     }*/
 
-    public void findProductByCode(String code, TextView tView){
+    public void findProductByCode(String code, TextView tView, PagerAdapter adapter, ArrayList<String> imageId, GetImgFromStorage imgReference){
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild(code)){
                     Map<String, Object> map = (Map<String, Object>) dataSnapshot.child(code).getValue();
-                    Log.d("HAIDD",map.toString());
                     dataResult.setpID(code);
                     dataResult.setpName(map.get("NAME").toString());
                     dataResult.setpCategory(map.get("CATEGORY").toString());
                     dataResult.setpVendor(map.get("VENDOR").toString());
                     dataResult.setpPrice(map.get("PRICE").toString());
-                    databaseReference.toString();
-                    Log.d("HAIDD map",map.toString());
-                    Log.d("HAIDD dataResult",dataResult.toString());
-
 
                     if (map.get("IMG_SRC") != null) {
-                        dataResult.setpImg_src(map.get("IMG_SRC").toString());
+                        dataResult.setpImg_src(map.get("IMG_SRC").toString().replaceAll(" ",""));
+                        imageId.addAll(Arrays.asList(dataResult.getpImg_src()));
                     }
 
-                    Log.d("HAIDD dataResult",dataResult.toString());
+                    Log.d("HAIDD dataResult",dataResult.toString()+"\n"+imageId.get(1));
+                    imgReference.setReference(dataResult.getpID());
+                    adapter.notifyDataSetChanged();
                     tView.setText(dataResult.toString());
 //                    for (Map.Entry<String,Object> entry:map.entrySet()){
 //                        Log.d("HAIDD",entry.getKey()+":"+entry.getValue());
@@ -96,5 +100,9 @@ public class ProductDataAccess {
                 Log.w("HAIDD", "Failed to read value.", databaseError.toException());
             }
         });
+    }
+
+    public Product getDataResult() {
+        return dataResult;
     }
 }

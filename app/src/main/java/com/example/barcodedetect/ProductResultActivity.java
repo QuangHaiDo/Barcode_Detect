@@ -12,7 +12,10 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.ArrayList;
+
 import firebase.database.helper.ProductDataAccess;
+import firebase.storage.helper.GetImgFromStorage;
 import model.Product;
 
 public class ProductResultActivity extends Activity {
@@ -22,10 +25,11 @@ public class ProductResultActivity extends Activity {
     Product pResult;
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
-
+    GetImgFromStorage imgReference;
     private int dotscount;
     private ImageView[] dots;
 
+    ArrayList<String> imageId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,29 +38,21 @@ public class ProductResultActivity extends Activity {
         viewPager = findViewById(R.id.images_scrolling);
         productInfo = findViewById(R.id.productInfo);
 
-
         /**
          * Read data from database and pass result to @TextView productInfo
          */
-
+        imageId = new ArrayList<>();
+        imgReference = new GetImgFromStorage();
+        PagerAdapter adapter = new CustomPagerAdapter(ProductResultActivity.this,imageId,imgReference);
+        viewPager.setAdapter(adapter);
         productDataAccess = new ProductDataAccess();
-        productDataAccess.findProductByCode(getIntent().getStringExtra("textResult"),productInfo);
-        /* //read img_src
-        sau productDataAcess lay duoc thogn tin anh, src anh roi pass vao duoi
-        */
+        productDataAccess.findProductByCode(getIntent().getStringExtra("textResult"),productInfo,adapter,imageId,imgReference);
+
         /** pass img_src to imageId[] and imagesName[]
         */
-//        Integer[] imageId = {R.raw.img1,R.raw.img2,R.raw.img3,R.raw.img4,R.raw.img5};
-        String[] imageId = {"8935001800286/IMG_20200507_153714.jpg",
-                "8935001800286/but-bi-thien-long-027.jpg",
-                "8935001800286/but_bi_tl_027_xanh_hop_20_3.jpg",
-                "8935246908662/IMG_20200507_153732.jpg",
-                "8935246908662/IMG_20200507_153741.jpg"};
 
-        PagerAdapter adapter = new CustomPagerAdapter(ProductResultActivity.this,imageId);
-        viewPager.setAdapter(adapter);
-
-        dotscount = adapter.getCount();
+        // fixed img per product preview
+        dotscount = 3;
         dots = new ImageView[dotscount];
         /** insert image to ViewPager
          * */
