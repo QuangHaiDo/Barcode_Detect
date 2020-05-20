@@ -1,56 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:keepScreenOn="true"
-    android:orientation="vertical">
+    android:background="@color/transparent"
+    android:keepScreenOn="true">
 
     <common.CameraSourcePreview
         android:id="@+id/camera_preview"
         android:layout_width="match_parent"
-        android:layout_height="560dp"
-        android:layout_gravity="center">
+        android:layout_height="match_parent">
 
         <common.GraphicOverlay
             android:id="@+id/camera_preview_graphic_overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </common.CameraSourcePreview>
-
-    <TextView
-        android:id="@+id/textView"
+    <include
+        layout="@layout/top_action_bar_in_live_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:text="Mã Tìm Thấy:"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/text_result"
+        android:layout_gravity="top"/>
+    <include
+        layout="@layout/scan_activity_element"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginTop="32dp"
-        android:background="#FFFFFF"
-        android:longClickable="true"
-        android:maxLines="3"
-        android:paddingStart="12dp"
-        android:paddingLeft="12dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="12dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="12dp"
-        android:scrollbars="vertical"
-        android:textAlignment="textStart"
-        android:textColor="#00E676"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/clear_textview"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Xóa" />
-</LinearLayout>
+        android:layout_gravity="bottom" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

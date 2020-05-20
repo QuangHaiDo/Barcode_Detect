@@ -2,11 +2,13 @@ package com.example.barcodedetect;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +24,8 @@ import common.GraphicOverlay;
 public class ScanActivity extends Activity {
 
     private static final String TAG = "ScanActivity";
-
+    private ImageView flashButton;
+    private ImageView closeButton;
     private CameraSource cameraSource;
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
@@ -35,6 +38,28 @@ public class ScanActivity extends Activity {
         textResult = findViewById(R.id.text_result);
         textResult.setMovementMethod(new ScrollingMovementMethod());
         preview = findViewById(R.id.camera_preview);
+
+        flashButton = findViewById(R.id.flash_button);
+        flashButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flashButton.isSelected()) {
+                    flashButton.setSelected(false);
+                    cameraSource.updateFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                } else {
+                    flashButton.setSelected(true);
+                    cameraSource.updateFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                }
+            }
+        });
+
+        closeButton = findViewById(R.id.close_button);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         textResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

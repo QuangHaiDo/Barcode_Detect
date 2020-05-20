@@ -53,8 +53,8 @@ public class CameraSource {
   public static final int CAMERA_FACING_FRONT = CameraInfo.CAMERA_FACING_FRONT;
 
   public static final int IMAGE_FORMAT = ImageFormat.NV21;
-  public static final int DEFAULT_REQUESTED_CAMERA_PREVIEW_WIDTH = 480;
-  public static final int DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT = 640;
+  public static final int DEFAULT_REQUESTED_CAMERA_PREVIEW_WIDTH = 640;
+  public static final int DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT = 360;
 
   private static final String TAG = "MIDemoApp:CameraSource";
 
@@ -247,6 +247,12 @@ public class CameraSource {
       throw new IllegalArgumentException("Invalid camera: " + facing);
     }
     this.facing = facing;
+  }
+
+  public void updateFlashMode(String flashMode) {
+    Camera.Parameters parameters = camera.getParameters();
+    parameters.setFlashMode(flashMode);
+    camera.setParameters(parameters);
   }
 
   /** Returns the preview size that is currently in use by the underlying camera. */

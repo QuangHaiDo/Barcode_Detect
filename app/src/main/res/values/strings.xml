@@ -21,4 +21,8 @@
     </string>
     <string name="no_result_found">No Result Found</string>
     <string name="findingHint">Đang tìm kiếm sản phẩm...</string>
+
+    <string name="cd_close_button">Back</string>
+    <string name="cd_flash_button">Toggle camera flash</string>
+
 </resources>
