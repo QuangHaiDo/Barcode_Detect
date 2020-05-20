@@ -1,8 +1,12 @@
 package com.example.barcodedetect;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,8 +32,9 @@ public class ProductResultActivity extends Activity {
     GetImgFromStorage imgReference;
     private int dotscount;
     private ImageView[] dots;
-
+    ImageView exit_productView;
     ArrayList<String> imageId;
+    Button search_btn;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +42,27 @@ public class ProductResultActivity extends Activity {
         sliderDotspanel = findViewById(R.id.sliderDots);
         viewPager = findViewById(R.id.images_scrolling);
         productInfo = findViewById(R.id.productInfo);
-
+        exit_productView = findViewById(R.id.exit_product);
+        exit_productView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        search_btn = findViewById(R.id.search_with_google);
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = getIntent().getStringExtra("textResult");
+                if (query.length()!=0){
+                    Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, query);
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
         /**
          * Read data from database and pass result to @TextView productInfo
          */
