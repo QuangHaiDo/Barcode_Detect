@@ -79,15 +79,13 @@ public class ProductDataAccess {
                     if (map.get("IMG_SRC") != null) {
                         dataResult.setpImg_src(map.get("IMG_SRC").toString().replaceAll(" ",""));
                         imageId.addAll(Arrays.asList(dataResult.getpImg_src()));
+                        Log.d("HAIDD dataResult",dataResult.toString()+"\n"+imageId.get(1));
                     }
 
-                    Log.d("HAIDD dataResult",dataResult.toString()+"\n"+imageId.get(1));
                     imgReference.setReference(dataResult.getpID());
                     adapter.notifyDataSetChanged();
                     tView.setText(dataResult.toString());
-//                    for (Map.Entry<String,Object> entry:map.entrySet()){
-//                        Log.d("HAIDD",entry.getKey()+":"+entry.getValue());
-//                    }
+
                 } else {
                     tView.setText("Không tìm thấy kết quả");
                     Log.d("HAIDD"+this.getClass(),"Khong co du lieu");

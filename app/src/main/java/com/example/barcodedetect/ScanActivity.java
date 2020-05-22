@@ -131,7 +131,13 @@ public class ScanActivity extends Activity {
         textResult.setText("");
         super.onResume();
         Log.d(TAG, "onResume");
+        if (flashButton.isSelected()) {
+            flashButton.setSelected(false);
+        } else {
+            flashButton.setSelected(true);
+        }
         startCameraSource();
+
     }
     @Override
     protected void onPause() {
