@@ -1,6 +1,9 @@
 package com.example.barcodedetect;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
@@ -31,6 +34,7 @@ public class ScanActivity extends Activity {
     private GraphicOverlay graphicOverlay;
     private TextView textResult;
     private Button clearText;
+    private Button copyClipBoard;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +78,19 @@ public class ScanActivity extends Activity {
 
         clearText = findViewById(R.id.clear_textview);
         clearText.setOnClickListener(v -> textResult.setText(""));
+
+        copyClipBoard = findViewById(R.id.copy_to_clipboard);
+        copyClipBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager)
+                        getSystemService(Context.CLIPBOARD_SERVICE);
+                // Creates a new text clip to put on the clipboard
+                ClipData clip = ClipData.newPlainText("code_detected",textResult.getText().toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(),"Đã sao chép mã: \n"+textResult.getText().toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
 
         if (preview == null) {
             Log.d(TAG, "Preview is null");

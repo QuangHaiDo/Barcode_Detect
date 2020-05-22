@@ -13,7 +13,6 @@
 // limitations under the License.
 package common;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

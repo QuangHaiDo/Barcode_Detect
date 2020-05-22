@@ -25,11 +25,26 @@
     <include layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ic_scan_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
         android:src="@drawable/ic_scan_icon"
-        app:fabCustomSize="75dp"
-        android:id="@+id/ic_scan_code"/>
+        app:fabCustomSize="65dp"
+        app:layout_anchor="@+id/relativeLayout"
+        app:layout_anchorGravity="top|center" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_height="@dimen/top_action_bar_height"
+        android:background="@drawable/bottom_gradient_bar"
+        android:paddingStart="@dimen/top_action_bar_padding_horizontal"
+        android:paddingEnd="@dimen/top_action_bar_padding_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
