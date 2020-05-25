@@ -67,10 +67,17 @@ public class ScanActivity extends Activity {
         textResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (textResult.getText().toString().length()!=0){
+                String code = textResult.getText().toString();
+                if (isValid(code)){
                     Intent i = new Intent(getApplicationContext(),ProductResultActivity.class);
                     i.putExtra("textResult",textResult.getText().toString());
                     startActivity(i);
+                } else {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            R.string.codeInvalidToast,
+                            Toast.LENGTH_SHORT
+                    ) .show();
                 }
             }
         });
@@ -83,12 +90,16 @@ public class ScanActivity extends Activity {
         copyClipBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ClipboardManager clipboard = (ClipboardManager)
-                        getSystemService(Context.CLIPBOARD_SERVICE);
-                // Creates a new text clip to put on the clipboard
-                ClipData clip = ClipData.newPlainText("code_detected",textResult.getText().toString());
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(getApplicationContext(),"Đã sao chép mã: \n"+textResult.getText().toString(),Toast.LENGTH_SHORT).show();
+                String code = textResult.getText().toString();
+                if (code.length()>0){
+                    ClipboardManager clipboard = (ClipboardManager)
+                            getSystemService(Context.CLIPBOARD_SERVICE);
+                    // Creates a new text clip to put on the clipboard
+                    ClipData clip = ClipData.newPlainText("code_detected",textResult.getText().toString());
+                    clipboard.setPrimaryClip(clip);
+                    Toast.makeText(getApplicationContext(),"Đã sao chép mã: \n"+textResult.getText().toString(),Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
@@ -142,19 +153,18 @@ public class ScanActivity extends Activity {
         }
     }
 
+    public boolean isValid(String s){
+        if (s.matches("([a-zA-Z0-9]){8,20}")) return true;
+        else return false;
+    }
 
     @Override
     public void onResume() {
         textResult.setText("");
         super.onResume();
         Log.d(TAG, "onResume");
-        if (flashButton.isSelected()) {
-            flashButton.setSelected(false);
-        } else {
-            flashButton.setSelected(true);
-        }
+        flashButton.setSelected(false);
         startCameraSource();
-
     }
     @Override
     protected void onPause() {

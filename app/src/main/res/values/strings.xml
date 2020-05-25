@@ -26,5 +26,6 @@
     <string name="cd_flash_button">Toggle camera flash</string>
     <string name="preview_activity_label">Thông tin sản phẩm</string>
     <string name="bnt_text_findProduct">Tìm sản phẩm</string>
+    <string name="codeInvalidToast">Mã chưa nhận diện được hoặc không hợp lệ</string>
 
 </resources>
