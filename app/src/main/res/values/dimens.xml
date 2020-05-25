@@ -5,7 +5,7 @@
     <dimen name="design_fab_image_size" tools:override="true">45dp</dimen>
 
     <dimen name="top_action_bar_padding_horizontal">8dp</dimen>
-    <dimen name="top_action_bar_height">64dp</dimen>
+    <dimen name="top_action_bar_height">56dp</dimen>
     <dimen name="top_action_button_padding">12dp</dimen>
     <dimen name="search_progress_bar_size">48dp</dimen>
     <dimen name="search_button_text_size">16sp</dimen>
