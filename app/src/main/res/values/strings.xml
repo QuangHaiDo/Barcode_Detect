@@ -27,5 +27,10 @@
     <string name="preview_activity_label">Thông tin sản phẩm</string>
     <string name="bnt_text_findProduct">Tìm sản phẩm</string>
     <string name="codeInvalidToast">Mã chưa nhận diện được hoặc không hợp lệ</string>
+    <string name="search_history">
+        Lịch sử tra cứu \n\n
+        <b>8935001800286</b> - Bút bi thiên long TL-027 \n\n
+        <b>8935246908662</b> -Sách Từ điển Anh - Việt \n\n
+    </string>
 
 </resources>
