@@ -79,7 +79,6 @@ public class ProductDataAccess {
                     if (map.get("IMG_SRC") != null) {
                         dataResult.setpImg_src(map.get("IMG_SRC").toString().replaceAll(" ",""));
                         imageId.addAll(Arrays.asList(dataResult.getpImg_src()));
-                        Log.d("HAIDD dataResult",dataResult.toString()+"\n"+imageId.get(1));
                     }
 
                     imgReference.setReference(dataResult.getpID());
@@ -88,7 +87,6 @@ public class ProductDataAccess {
 
                 } else {
                     tView.setText("Không tìm thấy kết quả");
-                    Log.d("HAIDD"+this.getClass(),"Khong co du lieu");
                 }
 
             }

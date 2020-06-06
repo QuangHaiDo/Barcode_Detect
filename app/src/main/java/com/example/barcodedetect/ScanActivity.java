@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -42,7 +43,7 @@ public class ScanActivity extends Activity {
         textResult = findViewById(R.id.text_result);
         textResult.setMovementMethod(new ScrollingMovementMethod());
         preview = findViewById(R.id.camera_preview);
-
+        textResult.setPaintFlags(textResult.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         flashButton = findViewById(R.id.flash_button);
         flashButton.setOnClickListener(new View.OnClickListener() {
             @Override

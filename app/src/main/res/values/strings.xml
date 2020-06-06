@@ -32,5 +32,8 @@
         <b>8935001800286</b> - Bút bi thiên long TL-027 \n\n
         <b>8935246908662</b> -Sách Từ điển Anh - Việt \n\n
     </string>
+    <string name="ma_tim_thay">Mã Tìm Thấy:</string>
+    <string name="copy">Sao chép</string>
+    <string name="delete">Xóa</string>
 
 </resources>

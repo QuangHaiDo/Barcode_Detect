@@ -23,7 +23,6 @@ public class CustomPagerAdapter extends PagerAdapter {
 
         this.activity = activity;
         this.imagesArray = imagesArray;
-        this.imagesArray = imagesArray;
         this.imgReference =imgReference;
     }
     @Override

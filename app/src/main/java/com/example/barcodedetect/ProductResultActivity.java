@@ -79,8 +79,8 @@ public class ProductResultActivity extends Activity {
         // fixed img per product preview
         dotscount = 3;
         dots = new ImageView[dotscount];
-        /** insert image to ViewPager
-         * */
+        // insert images to ViewPager
+
         for(int i = 0; i < dotscount; i++){
 
             dots[i] = new ImageView(this);

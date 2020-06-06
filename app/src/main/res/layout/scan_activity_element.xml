@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingStart="12dp"
-        android:text="Mã Tìm Thấy:"
+        android:paddingEnd="12dp"
+        android:text="@string/ma_tim_thay"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +34,8 @@
         android:paddingBottom="12dp"
         android:scrollbars="vertical"
         android:textAlignment="textStart"
-        android:textColor="#00E676"
+        android:textAllCaps="false"
+        android:textColor="#2979FF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,14 +54,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sao chép" />
+            android:text="@string/copy"
+            style="@style/Widget.AppCompat.Button"/>
 
         <Button
             android:id="@+id/clear_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Xóa" />
+            android:text="@string/delete"
+            style="@style/Widget.AppCompat.Button"/>
 
     </LinearLayout>
 
